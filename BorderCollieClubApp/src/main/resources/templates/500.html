@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+
+<body id="error-body">
+<div id="container-wrapper">
+    <header>
+        <th:block th:include="~{fragments/navbar}"></th:block>
+    </header>
+    <div id="root" class="justify-content-center p-lg-5">
+        <section id="error-type">
+            <h3 class="text-danger h4 col-md text-center">
+                We are sorry, but you know that ours Dog dev team will be punished without a walk until tomorrow!!!</h3>
+        </section>
+        <div class="text-center p-lg-3">
+            <a th:href="@{/}" class="btn btn-info">Back To Home</a>
+        </div>
+    </div>
+</div>
+
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head th:replace="~{/fragments/head}">
+</head>
+
+<div>
+    <nav th:replace="~{/fragments/navigation}"></nav>
+</div>
+
+<div class="container-fluid" th:object="${user}">
+    <h2 class="text-center text-white mt-5">Details</h2>
+    <div class="offers row mx-auto d-flex flex-row justify-content-center">
+        <div class="offer card col-sm-2 col-md-3  col-lg-4 m-1 p-0">
+
+            <div class="card-body pb-1">
+                <h5 class="card-title">User Info</h5>
+            </div>
+            <ul class="offer-details list-group list-group-flush">
+                <li class="list-group-item">
+                    <div class="card-text"><span>• User Name: </span>
+                        <th:block th:text="*{username}"></th:block>
+                    </div>
+                    <div class="card-text"><span>• Email: </span>
+                        <th:block th:text="*{email}"></th:block>
+                    </div>
+                    <div class="card-text"><span>• Age: </span>
+                        <th:block th:text="*{age}"></th:block>
+                    </div>
+                    <div class="card-text"><span>• First Name: </span>
+                        <th:block th:text="*{firstName}"></th:block>
+                    </div>
+                    <div class="card-text"><span>• Last Name: </span>
+                        <th:block th:text="*{lastName}"></th:block>
+                    </div>
+                    <div class="card-text"><span>• Country: </span>
+                        <th:block th:text="*{country}"></th:block>
+                    </div>
+                </li>
+            </ul>
+            <div th:if="${canDelete}" class="card-body">
+                <form th:method="DELETE" th:action="@{/pages/admins/{id}(id=*{id})}"
+                      class="form-inline my-2 my-lg-0 border px-3">
+                    <button type="submit" name="submit" value="value" class="btn btn-link nav-link">DELETE</button>
+                </form>
+
+            </div>
+            <a class="nav-link" th:href="@{/pages/admins/allUsers}">BACK</a>
+        </div>
+    </div>
+</div>
