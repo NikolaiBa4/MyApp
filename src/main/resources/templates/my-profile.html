@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <span th:replace="~{/fragments/head}"></span>
+</head>
+
+<body>
+
+<div>
+    <nav th:replace="~{/fragments/navigation}"></nav>
+</div>
+
+<div class="container">
+
+    <h2 class="text-center text-white">Edit Your Profile</h2>
+
+    <form th:method="POST"
+          th:action="@{/my-profile/edit}"
+          th:object="${userEditDto}"
+          class="main-form mx-auto col-md-8 d-flex flex-column justify-content-center">
+
+        <div class="row">
+            <div class="form-group col-md-6 mb-3">
+
+                <label th:for="firstName"
+                       class="text-white font-weight-bold">First Name</label>
+                <input type="text"
+                       th:field="*{firstName}"
+                       class="form-control"
+                       placeholder="Length between 3 and 20 letters!"
+                />
+
+                <p th:if="${#fields.hasErrors('firstName')}"
+                   class="errors alert alert-danger">
+                    Valid first name is required.
+                </p>
+
+            </div>
+
+
+            <div class="form-group col-md-6 mb-3">
+
+                <label th:for="lastName"
+                       class="text-white font-weight-bold">Last Name</label>
+                <input th:field="*{lastName}"
+                       class="form-control"
+                       placeholder="Length between 3 and 20 letters!"
+                />
+
+                <p th:if="${#fields.hasErrors('lastName')}"
+                   class="errors alert alert-danger">
+                    Valid last name is required.
+                </p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group col-md-6 mb-3">
+
+                <label th:for="countryName"
+                       class="text-white font-weight-bold">Country name</label>
+                <input type="text"
+                       th:field="*{countryName}"
+                       class="form-control"
+                       placeholder="Length between 3 and 20 letters!"
+                />
+
+                <p th:if="${#fields.hasErrors('countryName')}"
+                   class="errors alert alert-danger">
+                    Valid country name is required.
+                </p>
+
+            </div>
+
+
+            <div class="form-group col-md-6 mb-3">
+
+                <label th:for="Age"
+                       class="text-white font-weight-bold">Age</label>
+                <input th:field="*{age}"
+                       class="form-control"
+                       placeholder="Age"
+                />
+
+                <p th:if="${#fields.hasErrors('age')}"
+                   class="errors alert alert-danger">
+                    Age is required.
+                </p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group col-md-6 mb-3">
+
+                <label th:for="email"
+                       class="text-white font-weight-bold">
+                    Email
+                </label>
+                <input th:field="*{email}"
+                       class="form-control"
+                       placeholder="example@example.com"
+                       th:value="*{email}"/>
+                <p th:if="${#fields.hasErrors('email')}"
+                   class="errors alert alert-danger">
+                    Valid email is required.
+                </p>
+            </div>
+
+            <div class="form-group col-md-6 mb-3">
+
+                <label th:for="username"
+                       class="text-white font-weight-bold">
+                    Username
+                </label>
+
+                <input th:field="*{username}"
+                       class="form-control"
+                       id="username"
+                       name="username"
+                       placeholder="Length between 3 and 20 letters!"
+                       th:value="*{username}"/>
+                <p th:if="${#fields.hasErrors('username')}"
+                   class="errors alert alert-danger">
+                    Valid username is required.
+                </p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group col-md-6 mb-3">
+                <label for="password"
+                       class="text-white font-weight-bold">
+                    Password
+                </label>
+                <input id="password"
+                       name="password"
+                       type="password"
+                       class="form-control"
+                       placeholder="Length between 5 and 20 letters!"
+                />
+                <p th:if="${#fields.hasErrors('password')}"
+                   class="errors alert alert-danger">
+                    Password is required.
+                </p>
+            </div>
+
+
+            <div class="form-group col-md-6 mb-3">
+
+                <label for="confirmPassword"
+                       class="text-white font-weight-bold">
+                    Confirm Password
+                </label>
+                <input id="confirmPassword"
+                       name="confirmPassword"
+                       type="password"
+                       min="2"
+                       max="20"
+                       class="form-control"
+                       placeholder="Length between 5 and 20 letters!"/>
+
+                <p th:if="${#fields.hasErrors('confirmPassword')}"
+                   class="errors alert alert-danger">
+                    Passwords does not match.
+                </p>
+
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col col-md-4">
+                <div class="button-holder d-flex">
+                    <input type="submit" class="btn btn-info btn-lg" value="Edit user"/>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+</body>
+</html>
